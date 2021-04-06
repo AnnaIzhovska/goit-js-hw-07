@@ -22,22 +22,20 @@ galerryEl.classList.add('flex-container');
 galerryEl.style.display = 'flex';
 galerryEl.style.alignItems = 'center';
 
-const option = images.map(option => {
+const optionEl = images.map(option => {
   
 const galleryListEl = document.createElement('li');
 galleryListEl.classList.add('flex-element');
 galleryListEl.style.marginRight = '20px';
 galleryListEl.style.listStyle = 'none';
 
+galleryListEl.insertAdjacentHTML(
+  'afterbegin',
+  `<img src='${option.url}' alt='${option.alt}' width='380px'>`,
 
-  const galleryImgEl = document.createElement('img');
-  galleryImgEl.src = option.url;
-  galleryImgEl.alt = option.alt;
-  galleryImgEl.width = 350;
+)
 
-  galleryListEl.appendChild(galleryImgEl);
-  galerryEl.appendChild(galleryListEl);
-
-  return galleryImgEl;
+  return galleryListEl;
 });
-console.log(galerryEl)
+
+galerryEl.append(...optionEl);
